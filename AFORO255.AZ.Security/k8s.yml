@@ -1,0 +1,42 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment-security
+  labels:
+     app: service-security
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-security
+  template:
+    metadata:
+      labels:
+        app: service-security
+    spec:
+      containers:
+      - name: app-security
+        image: acrcognosbankera.azurecr.io/securityapp:{{Build.BuildId}}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIROMENT
+          value: "Production"
+        - name: CONFIG_CN_APP_EXTERNAL
+          value: "Endpoint=https://config-cognos-era.azconfig.io;Id=MayN;Secret=Ed3MdElYP+zmWNmYX41DzC/hgonun1x/NYA1iHDmPR8="
+      imagePullSecrets:
+      - name: cognos.com
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service-security
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: http
+  selector:
+    app: service-security

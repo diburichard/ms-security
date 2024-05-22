@@ -1,0 +1,30 @@
+{
+  "profiles": {
+    "AFORO255.AZ.Security": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_CN_APP_EXTERNAL": "Endpoint=https://config-cognos-era.azconfig.io;Id=MayN;Secret=Ed3MdElYP+zmWNmYX41DzC/hgonun1x/NYA1iHDmPR8="
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5001"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_HTTP_PORTS": "8080"
+      },
+      "publishAllPorts": true
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:36903",
+      "sslPort": 0
+    }
+  }
+}
